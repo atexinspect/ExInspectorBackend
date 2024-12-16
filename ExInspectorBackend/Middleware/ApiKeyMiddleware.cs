@@ -1,32 +1,30 @@
 ﻿namespace ExInspectorBackend.Middleware
 {
-    public class Middleware
+    public class ApiKeyMiddleware
     {
         private readonly RequestDelegate _next;
-        private const string XMID = "XMid";
-        public Middleware(RequestDelegate next)
+        private const string APIKEY = "XApiKey";
+        public ApiKeyMiddleware(RequestDelegate next)
         {
             _next = next;
         }
         public async Task InvokeAsync(HttpContext context)
         {
-            if (!context.Request.Headers.TryGetValue(XMID, out var extractedXMid))
+            if (!context.Request.Headers.TryGetValue(APIKEY, out var extractedApiKey))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync(" ");
+                await context.Response.WriteAsync("Api Key was not provided");
                 return;
             }
 
             var appSettings = context.RequestServices.GetRequiredService<IConfiguration>();
 
-            var xMid = appSettings.GetValue<string>(XMID);
+            var apiKey = appSettings.GetValue<string>(APIKEY);
 
-            var xMid1 = FormatAPI.FormatString(xMid);
-
-            if (!xMid1.Equals(extractedXMid))
+            if (!apiKey.Equals(extractedApiKey) || !apiKey.Equals("pgH7QzFHJx4w46fI5Uzi4RvtTwlEXp"))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync(" ");
+                await context.Response.WriteAsync("Unauthorized client");
                 return;
             }
 

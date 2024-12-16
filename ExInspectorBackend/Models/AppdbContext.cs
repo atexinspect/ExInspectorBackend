@@ -10,6 +10,8 @@ namespace ExInspectorBackend.Models
 
         public DbSet<Asset> Asset => Set<Asset>();
         public DbSet<AssetType> AssetType => Set<AssetType>();
+        public DbSet<AuditLog> AuditLog => Set<AuditLog>();
+        public DbSet<ErrorReports> ErrorReports => Set<ErrorReports>();
         public DbSet<Location> Location => Set<Location>();
         public DbSet<LocationSystems> LocationSystems => Set<LocationSystems>();
         public DbSet<LotDetails> LotDetails => Set<LotDetails>();
