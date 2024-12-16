@@ -13,7 +13,7 @@
             if (!context.Request.Headers.TryGetValue(XMID, out var extractedXMid))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync(string.Empty);
+                await context.Response.WriteAsync(" ");
                 return;
             }
 
@@ -26,7 +26,7 @@
             if (!xMid1.Equals(extractedXMid))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync(string.Empty);
+                await context.Response.WriteAsync(" ");
                 return;
             }
 
