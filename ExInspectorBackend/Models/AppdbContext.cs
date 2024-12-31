@@ -19,7 +19,6 @@ namespace ExInspectorBackend.Models
         public DbSet<MembershipTasks> MembershipTasks => Set<MembershipTasks>();
         public DbSet<MembershipUsers> MembershipUsers => Set<MembershipUsers>();
         public DbSet<MembershipUsersInRoles> MembershipUsersInRoles => Set<MembershipUsersInRoles>();
-        public DbSet<ScheduleGroups> ScheduleGroups => Set<ScheduleGroups>();
         public DbSet<Schedules> Schedules => Set<Schedules>();
         public DbSet<WorkOrders> WorkOrders => Set<WorkOrders>();
 
