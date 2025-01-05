@@ -11,6 +11,7 @@ namespace ExInspectorBackend.Controllers
         public AssetController(AppDbContext context)
             : base(new EntityTableRepository<Asset>(context))
         {
+            Options = new TableControllerOptions { EnableSoftDelete = true };
         }
     }
 }

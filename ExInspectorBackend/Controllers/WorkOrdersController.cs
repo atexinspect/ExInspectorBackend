@@ -11,6 +11,7 @@ namespace ExInspectorBackend.Controllers
         public WorkOrdersController(AppDbContext context)
             : base(new EntityTableRepository<WorkOrders>(context))
         {
+            Options = new TableControllerOptions { EnableSoftDelete = true };
         }
     }
 }

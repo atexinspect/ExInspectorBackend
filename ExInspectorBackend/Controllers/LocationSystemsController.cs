@@ -11,6 +11,7 @@ namespace ExInspectorBackend.Controllers
         public LocationSystemsController(AppDbContext context)
             : base(new EntityTableRepository<LocationSystems>(context))
         {
+            Options = new TableControllerOptions { EnableSoftDelete = true };
         }
     }
 }

@@ -11,6 +11,7 @@ namespace ExInspectorBackend.Controllers
         public MembershipUsersController(AppDbContext context)
             : base(new EntityTableRepository<MembershipUsers>(context))
         {
+            Options = new TableControllerOptions { EnableSoftDelete = true };
         }
     }
 }

@@ -11,6 +11,7 @@ namespace ExInspectorBackend.Controllers
         public LotSchedulesController(AppDbContext context)
             : base(new EntityTableRepository<LotSchedules>(context))
         {
+            Options = new TableControllerOptions { EnableSoftDelete = true };
         }
     }
 }
