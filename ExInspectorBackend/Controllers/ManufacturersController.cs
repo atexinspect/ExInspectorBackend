@@ -11,7 +11,7 @@ namespace ExInspectorBackend.Controllers
         public ManufacturersController(AppDbContext context)
             : base(new EntityTableRepository<Manufacturers>(context))
         {
-            Options = new TableControllerOptions { EnableSoftDelete = true };
+            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 25 };
         }
     }
 }
