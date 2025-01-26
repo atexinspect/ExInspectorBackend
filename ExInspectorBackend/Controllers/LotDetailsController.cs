@@ -11,7 +11,7 @@ namespace ExInspectorBackend.Controllers
         public LotDetailsController(AppDbContext context)
             : base(new EntityTableRepository<LotDetails>(context))
         {
-            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 25 };
+            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 5 };
         }
     }
 }

@@ -11,7 +11,7 @@ namespace ExInspectorBackend.Controllers
         public SchedulesController(AppDbContext context)
             : base(new EntityTableRepository<Schedules>(context))
         {
-            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 25 };
+            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 5 };
         }
     }
 }

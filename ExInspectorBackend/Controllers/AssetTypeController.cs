@@ -11,7 +11,7 @@ namespace ExInspectorBackend.Controllers
         public AssetTypeController(AppDbContext context)
             : base(new EntityTableRepository<AssetType>(context))
         {
-            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 25 };
+            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 5 };
         }
     }
 }
