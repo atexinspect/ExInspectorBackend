@@ -1,9 +1,9 @@
-﻿using ExInspectorBackend.Models;
-using Microsoft.AspNetCore.Datasync;
-using Microsoft.AspNetCore.Datasync.EFCore;
+﻿using CommunityToolkit.Datasync.Server;
+using CommunityToolkit.Datasync.Server.EntityFrameworkCore;
+using ExInspectorBackend.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ExInspectorBackend.Controllers
+namespace ExInspectorService.Controllers
 {
     [Route("tables/membershipusersinroles")]
     public class MembershipUsersInRolesController : TableController<MembershipUsersInRoles>
@@ -11,7 +11,7 @@ namespace ExInspectorBackend.Controllers
         public MembershipUsersInRolesController(AppDbContext context)
             : base(new EntityTableRepository<MembershipUsersInRoles>(context))
         {
-            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 5 };
+            Options = new TableControllerOptions { EnableSoftDelete = true };
         }
     }
 }

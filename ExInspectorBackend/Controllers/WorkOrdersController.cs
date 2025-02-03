@@ -1,17 +1,19 @@
-﻿using ExInspectorBackend.Models;
-using Microsoft.AspNetCore.Datasync;
-using Microsoft.AspNetCore.Datasync.EFCore;
+﻿using CommunityToolkit.Datasync.Server;
+using CommunityToolkit.Datasync.Server.EntityFrameworkCore;
+using ExInspectorBackend.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ExInspectorBackend.Controllers
+namespace ExInspectorService.Controllers
 {
     [Route("tables/workorders")]
     public class WorkOrdersController : TableController<WorkOrders>
     {
-        public WorkOrdersController(AppDbContext context)
+        private readonly ILogger<WorkOrders> _logger;
+        public WorkOrdersController(AppDbContext context, ILogger<WorkOrders> logger)
             : base(new EntityTableRepository<WorkOrders>(context))
         {
-            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 5 };
+            _logger = logger;
+            Options = new TableControllerOptions { EnableSoftDelete = true };
         }
     }
 }

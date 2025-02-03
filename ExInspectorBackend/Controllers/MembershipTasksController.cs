@@ -1,6 +1,6 @@
-﻿using ExInspectorBackend.Models;
-using Microsoft.AspNetCore.Datasync;
-using Microsoft.AspNetCore.Datasync.EFCore;
+﻿using CommunityToolkit.Datasync.Server;
+using CommunityToolkit.Datasync.Server.EntityFrameworkCore;
+using ExInspectorBackend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExInspectorBackend.Controllers
@@ -11,7 +11,7 @@ namespace ExInspectorBackend.Controllers
         public MembershipTasksController(AppDbContext context)
             : base(new EntityTableRepository<MembershipTasks>(context))
         {
-            Options = new TableControllerOptions { EnableSoftDelete = true, PageSize = 5 };
+            Options = new TableControllerOptions { EnableSoftDelete = true };
         }
     }
 }

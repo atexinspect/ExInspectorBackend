@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Datasync.EFCore;
+﻿using CommunityToolkit.Datasync.Server.EntityFrameworkCore;
 
 namespace ExInspectorBackend.Models
 {
