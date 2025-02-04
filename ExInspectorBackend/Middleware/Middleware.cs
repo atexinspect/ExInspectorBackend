@@ -13,7 +13,8 @@
             if (!context.Request.Headers.TryGetValue(XMID, out var extractedXMid))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync(" ");
+                //await context.Response.WriteAsync(" ");
+                await context.Response.WriteAsync("Api Key was not provided ");
                 return;
             }
 
@@ -26,7 +27,8 @@
             if (!xMid1.Equals(extractedXMid))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync(" ");
+                //await context.Response.WriteAsync(" ");
+                await context.Response.WriteAsync("Unauthorized client");
                 return;
             }
 
