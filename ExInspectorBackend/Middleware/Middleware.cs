@@ -14,7 +14,7 @@
             {
                 context.Response.StatusCode = 401;
                 //await context.Response.WriteAsync(" ");
-                await context.Response.WriteAsync("Api Key was not provided ");
+                await context.Response.WriteAsync("Api Key was not provided.");
                 return;
             }
 
@@ -28,7 +28,7 @@
             {
                 context.Response.StatusCode = 401;
                 //await context.Response.WriteAsync(" ");
-                await context.Response.WriteAsync("Unauthorized client");
+                await context.Response.WriteAsync("Unauthorized client.");
                 return;
             }
 
