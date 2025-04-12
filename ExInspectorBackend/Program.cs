@@ -1,4 +1,5 @@
 using CommunityToolkit.Datasync.Server;
+using ExInspectorBackend.Controllers;
 using ExInspectorBackend.Middleware;
 using ExInspectorBackend.Models;
 using Microsoft.EntityFrameworkCore;
@@ -26,4 +27,5 @@ app.UseHttpsRedirection();
 
 // Configure and run the web service.
 app.MapControllers();
+app.MapBackendEndpoints();
 app.Run();
