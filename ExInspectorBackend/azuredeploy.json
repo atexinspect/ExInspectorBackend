@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2023-09-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "skuName": {
@@ -76,7 +76,7 @@
   "resources": [
     {
       "type": "Microsoft.Sql/servers",
-      "apiVersion": "2021-02-01-preview",
+      "apiVersion": "2022-11-01",
       "name": "[variables('sqlserverName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -87,7 +87,7 @@
     },
     {
       "type": "Microsoft.Sql/servers/databases",
-      "apiVersion": "2021-02-01-preview",
+      "apiVersion": "2022-11-01",
       "name": "[format('{0}/{1}', variables('sqlserverName'), variables('databaseName'))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -103,7 +103,7 @@
     },
     {
       "type": "Microsoft.Sql/servers/firewallRules",
-      "apiVersion": "2021-02-01-preview",
+      "apiVersion": "2022-11-01",
       "name": "[format('{0}/{1}', variables('sqlserverName'), 'AllowAllWindowsAzureIps')]",
       "properties": {
         "endIpAddress": "0.0.0.0",
@@ -115,7 +115,7 @@
     },
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2021-03-01",
+      "apiVersion": "2022-09-01",
       "name": "[variables('hostingPlanName')]",
       "location": "[parameters('location')]",
       "tags": {
@@ -131,7 +131,7 @@
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2021-03-01",
+      "apiVersion": "2023-01-01",
       "name": "[variables('websiteName')]",
       "location": "[parameters('location')]",
       "tags": {
@@ -160,7 +160,7 @@
     },
     {
       "type": "Microsoft.Web/sites/config",
-      "apiVersion": "2021-03-01",
+      "apiVersion": "2023-01-01",
       "name": "[format('{0}/{1}', variables('websiteName'), 'connectionstrings')]",
       "properties": {
         "DefaultConnection": {
