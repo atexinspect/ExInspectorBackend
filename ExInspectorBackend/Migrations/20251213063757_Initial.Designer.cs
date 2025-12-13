@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExInspectorBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251213062428_Initial")]
+    [Migration("20251213063757_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -775,49 +775,6 @@ namespace ExInspectorBackend.Migrations
                     b.ToTable("Schedules", t =>
                         {
                             t.HasTrigger("Schedules_datasync");
-                        });
-
-                    b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
-                });
-
-            modelBuilder.Entity("ExInspectorBackend.Models.Subscription", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ExpirationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsNearExpiration")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SkuStoreId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("UpdatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<byte[]>("Version")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UpdatedAt", "Deleted");
-
-                    b.ToTable("Subscription", t =>
-                        {
-                            t.HasTrigger("Subscription_datasync");
                         });
 
                     b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
