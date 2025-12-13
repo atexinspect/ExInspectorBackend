@@ -19,6 +19,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<MembershipUsers> MembershipUsers => Set<MembershipUsers>();
     public DbSet<MembershipUsersInRoles> MembershipUsersInRoles => Set<MembershipUsersInRoles>();
     public DbSet<Schedules> Schedules => Set<Schedules>();
+    public DbSet<Subscription> Subscription => Set<Subscription>();
     public DbSet<WorkOrders> WorkOrders => Set<WorkOrders>();
 
     public async Task InitializeDatabaseAsync()
@@ -97,6 +98,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         // Tells EF Core that the TodoList entity has a trigger.
         modelBuilder.Entity<Schedules>()
             .ToTable(tb => tb.HasTrigger("Schedules_datasync"));
+
+        // Tells EF Core that the TodoList entity has a trigger.
+        modelBuilder.Entity<Subscription>()
+            .ToTable(tb => tb.HasTrigger("Subscription_datasync"));
 
         // Tells EF Core that the TodoList entity has a trigger.
         modelBuilder.Entity<WorkOrders>()
