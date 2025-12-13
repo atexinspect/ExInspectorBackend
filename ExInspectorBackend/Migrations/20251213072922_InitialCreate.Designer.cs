@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExInspectorBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251213063757_Initial")]
-    partial class Initial
+    [Migration("20251213072922_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
