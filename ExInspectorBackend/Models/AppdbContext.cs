@@ -24,7 +24,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
     public async Task InitializeDatabaseAsync()
     {
-        _ = await Database.EnsureCreatedAsync();
+        //_ = await Database.EnsureCreatedAsync(); // Creates database without migrations table
+        _ = await Database.MigrateAsync(); // Creates database and includes migrations table
 
         const string datasyncTrigger = @"
             CREATE OR ALTER TRIGGER [dbo].[{0}_datasync] ON [dbo].[{0}] AFTER INSERT, UPDATE AS
