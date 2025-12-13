@@ -51,6 +51,20 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "repoURL": {
+      "type": "string",
+      "defaultValue": "https://github.com/atexinspect/ExInspectorBackend.git",
+      "metadata": {
+        "description": "The URL for the GitHub repository that contains the project to deploy."
+      }
+    },
+    "branch": {
+      "type": "string",
+      "defaultValue": "master",
+      "metadata": {
+        "description": "The branch of the GitHub repository to use."
+      }
     }
   },
   "variables": {
@@ -129,6 +143,19 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Web/sites/sourcecontrols",
+      "apiVersion": "2023-01-01",
+      "name": "[format('{0}/{1}', variables('websiteName'), 'web')]",
+      "properties": {
+        "repoUrl": "[parameters('repoURL')]",
+        "branch": "[parameters('branch')]",
+        "isManualIntegration": true
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('websiteName'))]"
       ]
     },
     {
