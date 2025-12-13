@@ -13,33 +13,11 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Initialize the database with migrations
+// Initialize the database
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    
-    // Apply any pending migrations
-    await context.Database.MigrateAsync().ConfigureAwait(false);
-    
-    // Install/update datasync triggers
-    const string datasyncTrigger = @"
-        CREATE OR ALTER TRIGGER [dbo].[{0}_datasync] ON [dbo].[{0}] AFTER INSERT, UPDATE AS
-        BEGIN
-            SET NOCOUNT ON;
-            UPDATE
-                [dbo].[{0}]
-            SET
-                [UpdatedAt] = SYSUTCDATETIME()
-            WHERE
-                [Id] IN (SELECT [Id] FROM INSERTED);
-        END
-    ";
-
-    foreach (var table in context.Model.GetEntityTypes())
-    {
-        string sql = string.Format(datasyncTrigger, table.GetTableName());
-        await context.Database.ExecuteSqlRawAsync(sql).ConfigureAwait(false);
-    }
+    await context.InitializeDatabaseAsync().ConfigureAwait(false);
 }
 
 app.UseAuthorization();
