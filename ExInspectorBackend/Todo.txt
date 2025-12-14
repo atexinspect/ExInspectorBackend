@@ -1,0 +1,5 @@
+﻿
+Add-Migration Initial Working
+update-database
+await Database.MigrateAsync(); Created tables and migration table in Azure
+azuredeploy.json - Github code reinstated
